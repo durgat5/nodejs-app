@@ -1,9 +1,19 @@
-var express = require('express');
+var request = require('supertest');
+var app = require('../index.js');
  
-var app = express();//Respond with "hello world" for requests that hit our root "/"
-app.get('/', function (req, res) {
- res.send('changed not ');
-});//listen to port 3000 by default
-app.listen(process.env.PORT || 3000);
- 
-module.exports = app;
+describe('GET /', function() {
+  it('respond with 404 page not found', function(done) {
+    request(app)
+      .get('/nonexistentpage')
+      .expect(404)
+      .end(function(err, res) {
+        if (err) {
+          // If there's an error, log it and pass it to the done callback
+          console.error(err);
+          return done(err);
+        }
+        // If everything is fine, invoke the done callback
+        done();
+      });
+  });
+});
