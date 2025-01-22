@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 966f06dd199a1a67243f1438313720979afc0556
 var request = require('supertest');
 var app = require('../index.js');
  
